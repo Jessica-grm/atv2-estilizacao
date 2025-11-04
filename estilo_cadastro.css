@@ -1,0 +1,75 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+fieldset {
+    border: 1px solid #d90000;
+    padding: 20px;
+    border-radius: 8px;
+    
+    display: grid; 
+    grid-template-columns: 1fr 2fr; 
+    gap: 15px; 
+}
+
+legend {
+    color: var(--cor-secundaria);
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+label {
+    font-weight: 500;
+    align-self: center; 
+    text-align: right; 
+    padding-right: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    font-size: 1em;
+   display: block;
+}
+
+input:focus,
+select:focus {
+   display: block;
+    box-shadow: 0 0 5px rgba(255, 127, 80, 0.5);
+    outline: none;
+}
+
+/* Estilo Padrão do Botão */
+button[type="submit"] {
+    /* Cores e Aparência */
+    color: rgb(0, 0, 0); 
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px; 
+    cursor: pointer;
+    display: block; 
+    width: 100%;
+    max-width: 300px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 25px;
+}
+
+button[type="submit"]:hover {
+    background-color: none; 
+    display:block;  
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

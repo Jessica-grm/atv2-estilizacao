@@ -1,0 +1,240 @@
+/* ========================================= */
+/* 1. Base e Variáveis (Cores e Reset) */
+/* ========================================= */
+
+/* Definição de Cores Institucionais */
+:root {
+    --cor-primaria: #5c1e6a; /* Um Coral vibrante para destaque */
+    --cor-secundaria: #4682B4; /* Azul Suave para contraste */
+    --cor-fundo-header: #ffffff; /* Fundo escuro */
+    --cor-texto-header: #241d1d; /* Texto claro */
+    --cor-texto: #333; /* Texto padrão do corpo */
+}
+
+/* Reset Básico para melhor controle de layout */
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho do elemento */
+    margin: 2px;
+    padding: 2px;
+}
+
+body {
+    /* Usa a fonte 'Roboto' que você linkou no HTML */
+    font-family: 'Roboto', sans-serif; 
+    color: var(--cor-texto);
+}
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+/* ========================================= */
+/* 2. Estilo do Cabeçalho (Header) */
+/* ========================================= */
+
+header {
+    background-color: var(--cor-fundo-header);
+    color: var(--cor-texto-header);
+    padding: 10px 5%; 
+    
+    /* Flexbox para alinhar logo e navegação lado a lado */
+    display: flex;
+    justify-content: space-between; /* Coloca logo na esquerda e nav na direita */
+    align-items: center; /* Centraliza verticalmente */
+    
+    /* Sombra para dar profundidade */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo da Logo */
+.logo {
+    height: 60px; /* Define um tamanho fixo para a logo */
+    object-fit: contain; /* Garante que a imagem se ajuste sem distorção */
+}
+
+/* ========================================= */
+/* 3. Estilo da Navegação (Nav) */
+/* ========================================= */
+
+/* Alinha os itens da lista (links) horizontalmente */
+header nav ul {
+    display: flex;
+    gap: 25px; /* Espaço entre os links */
+}
+
+/* Estilo do Link */
+header nav a {
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative; /* Necessário para o efeito de sublinhado animado */
+    color: var(--cor-texto-header); 
+}
+
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-primaria); /* Usa a cor de destaque */
+    transition: width 0.3s ease;
+}
+
+header nav a:hover::after,
+header nav a:focus::after {
+    width: 100%; /* A linha se expande ao passar o mouse */
+}
+
+
+/* ========================================= */
+/* 4. Responsividade (Para Celulares e Tablets) */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    
+    header {
+        /* Muda a direção para empilhar Logo e Navegação */
+        flex-direction: column; 
+        padding: 15px;
+    }
+
+    header nav {
+        margin-top: 15px; /* Adiciona espaço entre a logo e a navegação */
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    header nav ul {
+        justify-content: center; /* Centraliza os links no meio da tela */
+        gap: 15px; /* Reduz um pouco o espaço entre links em telas menores */
+    }
+
+    header nav a {
+        font-size: 1em;
+    }
+}
+
+/* ========================================= */
+/* 5. Estilo da Seção Principal de Conteúdo */
+/* (Baseado no seu HTML: <main> > <section>) */
+/* ========================================= */
+
+main section {
+    /* Padding e espaçamento geral */
+    padding: 50px 5%;
+    max-width: 1000px;
+    margin: 0 auto 40px auto; /* Centraliza a seção e adiciona margem inferior */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra mais destacada */
+    text-align: center; /* Centraliza o texto (h1 e p) */
+}
+
+main section h1 {
+    color: var(--cor-primaria); 
+    margin-bottom: 15px;
+    font-size: 2.2em;
+}
+
+main section h2 {
+    color: var(--cor-primaria); 
+    margin-bottom: 15px;
+    font-size: 2.2em;
+    text-align: center;
+}
+
+main section p {
+
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+    max-width: 850px; /* Limita a largura do parágrafo */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================================= */
+/* 6. Layout das Imagens (Galeria em Grid) */
+/* ========================================= */
+
+main section {
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; /* Espaço entre as imagens */
+}
+
+/* Garante que o texto ocupe toda a largura */
+main section h1,
+main section p {
+    grid-column: 1 / -1; /* Faz o título e o parágrafo ocuparem todas as 3 colunas */
+}
+
+
+/* Estilo de cada Imagem */
+main section img {
+    width: 100%;
+    height: 250px; /* Define uma altura fixa para que todas fiquem do mesmo tamanho */
+    object-fit: cover; /* Recorta a imagem para preencher o espaço, sem distorcer */
+    border-radius: 8px; /* Cantos arredondados */
+    transition: transform 0.3s ease; /* Transição para o efeito de hover */
+    cursor: pointer;
+}
+
+/* Efeito Hover sutil para interatividade */
+main section img:hover {
+    transform: scale(1.03); /* Aumenta um pouco a imagem ao passar o mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ========================================= */
+/* 7. Responsividade para o Grid de Imagens */
+/* ========================================= */
+
+@media (max-width: 900px) {
+    main section {
+        grid-template-columns: repeat(2, 1fr); /* Em tablets, exibe 2 colunas */
+    }
+}
+
+@media (max-width: 600px) {
+    main section {
+        grid-template-columns: 1fr; /* Em celulares, exibe 1 coluna (empilha) */
+        gap: 20px;
+    }
+
+    main section img {
+        height: auto; /* Deixa a altura flexível no celular */
+    }
+}
+
+/* ========================================= */
+/* 9. Estilo do Componente Botão (Reutilizável) */
+/* ========================================= */
+
+button {
+    /* Cores de Fundo e Texto (usando a cor de destaque secundária para ação) */
+    background-color: var(--cor-secundaria); 
+    color: var(--cor-texto-header); /* Cor branca/clara */
+    
+    border: none;
+    padding: 12px 25px; /* Espaçamento interno */
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 50px; /* Deixa o botão bem arredondado (pílula) */
+    cursor: pointer;
+    
+    /* Transições suaves para a interatividade */
+    transition: background-color 0.3s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+

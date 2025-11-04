@@ -1,0 +1,203 @@
+:root {
+    --cor-primaria: #5c1e6a; /* Um Coral vibrante para destaque */
+    --cor-secundaria: #4682B4; /* Azul Suave para contraste */
+    --cor-fundo-header: #ffffff; /* Fundo escuro */
+    --cor-texto-header: #241d1d; /* Texto claro */
+    --cor-texto: #333; /* Texto padrão do corpo */
+}
+
+/* Reset Básico para melhor controle de layout */
+* {
+    box-sizing: border-box; /* Garante que padding e border não aumentem o tamanho do elemento */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Usa a fonte 'Roboto' que você linkou no HTML */
+    font-family: 'Roboto', sans-serif; 
+    color: var(--cor-texto);
+}
+
+
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* Estilo da Logo */
+.logo {
+    height: 60px; /* Define um tamanho fixo para a logo */
+    object-fit: contain; /* Garante que a imagem se ajuste sem distorção */
+}
+
+/* ========================================= */
+/* 3. Estilo da Navegação (Nav) */
+/* ========================================= */
+
+/* Alinha os itens da lista (links) horizontalmente */
+header nav ul {
+    display: flex;
+    gap: 25px; /* Espaço entre os links */
+}
+
+/* Estilo do Link */
+header nav a {
+    font-size: 1.1em;
+    font-weight: 500;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    position: relative; /* Necessário para o efeito de sublinhado animado */
+    color: var(--cor-texto-header); 
+}
+
+/* Efeito Hover Bonito: Sublinhado que se expande */
+header nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--cor-primaria); /* Usa a cor de destaque */
+    transition: width 0.3s ease;
+}
+
+/* ========================================= */
+/* 2. Estilo do Cabeçalho (Header) */
+/* ========================================= */
+
+header {
+    background-color: var(--cor-fundo-header);
+    color: var(--cor-texto-header);
+    padding: 10px 5%; 
+    
+    /* Flexbox para alinhar logo e navegação lado a lado */
+    display: flex;
+    justify-content: space-between; /* Coloca logo na esquerda e nav na direita */
+    align-items: center; /* Centraliza verticalmente */
+    
+    /* Sombra para dar profundidade */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo da Logo */
+.logo {
+    height: 60px; /* Define um tamanho fixo para a logo */
+    object-fit: contain; /* Garante que a imagem se ajuste sem distorção */
+}
+
+header nav a:hover::after,
+header nav a:focus::after {
+    width: 100%; /* A linha se expande ao passar o mouse */
+}/* No seu CSS: adicione ou modifique o h1 dentro do header */
+header h1 {
+    font-size: 1.5em; /* Define um tamanho razoável */
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: var(--cor-texto-header);
+    
+    /* Faz o título quebrar a linha se o header se empilhar (no mobile) */
+    width: 100%; 
+}
+
+/* Garante que o h1 não atrapalhe o Flexbox em telas grandes */
+@media (min-width: 769px) {
+    header h1 {
+        display: none; /* Esconde o h1 quebra-galho em desktop, focando na logo/nav */
+    }
+}
+
+/* Estilo geral do main para centralizar e dar respiro */
+main {
+    padding: 40px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 50px; /* Espaço entre as seções */
+}
+
+/* Estilo Base para Todas as Seções */
+main section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+main section h2 {
+    color: var(--cor-primaria);
+    font-size: 2em;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--cor-secundaria);
+    padding-bottom: 10px;
+}
+
+/* Container dos projetos: usa Grid para alinhar os artigos */
+#projetos-em-destaque {
+    display: grid;
+    /* 1 coluna para o título, 2 colunas para os artigos (em desktop) */
+    grid-template-columns: 1fr 1fr; 
+    gap: 30px;
+}
+
+/* O título deve ocupar toda a largura */
+#projetos-em-destaque h2 {
+    grid-column: 1 / -1; 
+}
+
+/* Estilo de cada artigo */
+#projetos-em-destaque article {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+#projetos-em-destaque article:hover {
+    transform: translateY(-5px); /* Efeito sutil de elevação ao passar o mouse */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#projetos-em-destaque article h3 {
+    color: var(--cor-secundaria);
+    font-size: 1.5em;
+    margin-bottom: 5px;
+}
+
+/* Estilo da Figura e Imagens dentro dos Artigos */
+#projetos-em-destaque article img {
+    width: 100%;
+    height: 200px; /* Altura fixa para manter o grid alinhado */
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+#projetos-em-destaque figcaption {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+#projetos-em-destaque article p strong {
+    color: var(--cor-primaria);
+}
+
+/* Quebra do Grid para Mobile */
+@media (max-width: 850px) {
+    #projetos-em-destaque {
+        /* Em telas menores, os artigos se empilham em 1 coluna */
+        grid-template-columns: 1fr; 
+    }
+}
